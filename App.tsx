@@ -9,6 +9,7 @@ import WhoWeServe from './components/WhoWeServe';
 import HowItWorks from './components/HowItWorks';
 import Faq from './components/Faq';
 import Footer from './components/Footer';
+import TrustedBy from './components/TrustedBy';
 
 const App: React.FC = () => {
   const sections = {
@@ -39,6 +40,7 @@ const App: React.FC = () => {
          <div ref={sections.howItWorks}>
           <HowItWorks />
         </div>
+        <TrustedBy />
         <div ref={sections.proof}>
           <Proof />
         </div>
