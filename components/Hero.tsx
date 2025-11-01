@@ -1,3 +1,13 @@
+// FIX: Added a global type declaration for the 'wistia-player' custom element
+// to ensure it is correctly picked up by the TypeScript compiler across the project.
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      'wistia-player': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement> & { mediaId?: string; aspect?: string }, HTMLElement>;
+    }
+  }
+}
+
 import React from 'react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import { StarIcon } from './icons';

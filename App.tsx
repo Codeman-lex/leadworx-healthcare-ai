@@ -39,12 +39,12 @@ const App: React.FC = () => {
         </div>
         <AuthorityStrip />
         <ProvenSystem ctaAction={() => scrollToSection('getRollout')} />
-         <div ref={sections.howItWorks}>
-          <HowItWorks />
-        </div>
         <TrustedBy />
         <div ref={sections.proof}>
           <Proof />
+        </div>
+         <div ref={sections.howItWorks}>
+          <HowItWorks />
         </div>
         <RiskReversal />
         <div ref={sections.whoWeServe}>
