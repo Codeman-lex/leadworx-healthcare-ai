@@ -3,6 +3,7 @@ import Header from './components/Header';
 import Hero from './components/Hero';
 import AuthorityStrip from './components/AuthorityStrip';
 import Outcomes from './components/Outcomes';
+import ProvenSystem from './components/Mechanism';
 import Proof from './components/Proof';
 import RiskReversal from './components/RiskReversal';
 import WhoWeServe from './components/WhoWeServe';
@@ -33,10 +34,11 @@ const App: React.FC = () => {
         <div ref={sections.home}>
           <Hero ctaAction={() => scrollToSection('getRollout')} />
         </div>
-        <AuthorityStrip />
         <div ref={sections.outcomes}>
           <Outcomes />
         </div>
+        <AuthorityStrip />
+        <ProvenSystem ctaAction={() => scrollToSection('getRollout')} />
          <div ref={sections.howItWorks}>
           <HowItWorks />
         </div>

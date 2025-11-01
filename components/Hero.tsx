@@ -2,17 +2,6 @@ import React from 'react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import { StarIcon } from './icons';
 
-// FIX: Declared custom 'wistia-player' element type. This was moved from index.tsx
-// as the global declaration was not being picked up correctly. Placing it here
-// ensures the type is available for the custom element used in this component.
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'wistia-player': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement> & { 'media-id'?: string; aspect?: string }, HTMLElement>;
-    }
-  }
-}
-
 interface HeroProps {
     ctaAction: () => void;
 }
@@ -41,7 +30,7 @@ const Hero: React.FC<HeroProps> = ({ ctaAction }) => {
                         We install an AI-driven system that delivers financially qualified patients to your practice, without your staff making a single phone call.
                     </p>
                     <div className="mt-10 flex flex-col sm:flex-row items-center justify-center md:justify-start gap-6">
-                        <button onClick={ctaAction} className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-bold py-4 px-8 rounded-lg text-lg transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-xl w-full sm:w-auto">
+                        <button onClick={ctaAction} className="bg-brand-purple hover:bg-brand-purple-dark text-white font-bold py-4 px-8 rounded-lg text-lg transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-xl w-full sm:w-auto">
                             Book a Free Call
                         </button>
                         <div className="flex items-center gap-3">
@@ -63,7 +52,8 @@ const Hero: React.FC<HeroProps> = ({ ctaAction }) => {
                 {/* Right Column (Wistia Video) */}
                 <div className="fade-in-up md:order-last" style={{ transitionDelay: '200ms' }}>
                     <div className="w-full rounded-lg shadow-2xl overflow-hidden border-2 border-white/10">
-                        <wistia-player media-id="c5suobwacz" aspect="1.7777777777777777"></wistia-player>
+                        {/* FIX: Changed 'media-id' to 'mediaId' to be a valid JSX attribute. */}
+                        <wistia-player mediaId="c5suobwacz" aspect="1.7777777777777777"></wistia-player>
                     </div>
                 </div>
             </div>

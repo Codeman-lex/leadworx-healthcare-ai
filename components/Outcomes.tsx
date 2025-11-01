@@ -48,7 +48,7 @@ const Outcomes: React.FC = () => {
                     </p>
                     <div className="mt-8 p-6 bg-white border border-neutral-line rounded-lg shadow-sm">
                         <p className="font-semibold text-brand-purple">The Ultimate Result?</p>
-                        <p className="mt-2 font-display text-3xl md:text-4xl text-text-primary">
+                        <p className="mt-2 font-display text-3xl md:text-4xl text-text-primary font-bold">
                            +25–40 new qualified consults in your calendar, every 30 days.
                         </p>
                     </div>

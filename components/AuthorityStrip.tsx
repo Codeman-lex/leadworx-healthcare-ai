@@ -5,8 +5,8 @@ const authorityData = [
     { text: 'HIPAA-aware', animation: 'animate-glow-purple' },
     { text: 'BAA available', animation: 'animate-glow-blue', delay: 'delay-100ms' },
     { text: 'PHI safeguarded', animation: 'animate-glow-teal', delay: 'delay-200ms' },
-    { text: 'U.S./U.K./CA Practices', animation: 'animate-glow-pink', delay: 'delay-300ms' },
-    { text: 'Owner dashboard', animation: 'animate-glow-green', delay: 'delay-400ms' },
+    { text: 'Owner dashboard', animation: 'animate-glow-green', delay: 'delay-300ms' },
+    { text: 'U.S./U.K./CA Practices', animation: 'animate-glow-pink', delay: 'delay-400ms' },
 ];
 
 const AuthorityChip: React.FC<{ children: React.ReactNode; animationClass: string; animationDelay: string }> = ({ children, animationClass, animationDelay }) => (
