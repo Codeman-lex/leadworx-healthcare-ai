@@ -1,6 +1,17 @@
 import React from 'react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
-import { StarIcon, PlayIcon } from './icons';
+import { StarIcon } from './icons';
+
+// FIX: Declared custom 'wistia-player' element type. This was moved from index.tsx
+// as the global declaration was not being picked up correctly. Placing it here
+// ensures the type is available for the custom element used in this component.
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      'wistia-player': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement> & { 'media-id'?: string; aspect?: string }, HTMLElement>;
+    }
+  }
+}
 
 interface HeroProps {
     ctaAction: () => void;
@@ -24,7 +35,7 @@ const Hero: React.FC<HeroProps> = ({ ctaAction }) => {
                         AI-POWERED PATIENT ACQUISITION
                     </p>
                     <h1 className="font-display text-4xl md:text-6xl font-bold text-white leading-tight mt-4">
-                        Get 25+ Qualified Patients Every Month, Automatically.
+                        Get 25+ Financially Qualified Patients Every Month, Automatically.
                     </h1>
                     <p className="mt-6 max-w-2xl mx-auto md:mx-0 text-lg md:text-xl text-gray-300 leading-relaxed">
                         We install an AI-driven system that delivers financially qualified patients to your practice, without your staff making a single phone call.
@@ -49,21 +60,10 @@ const Hero: React.FC<HeroProps> = ({ ctaAction }) => {
                     </div>
                 </div>
                 
-                {/* Right Column (Video Placeholder) */}
-                <div className="fade-in-up md:order-last" style={{transitionDelay: '200ms'}}>
-                    <div className="aspect-video w-full bg-gray-900/50 rounded-lg shadow-2xl relative overflow-hidden group border-2 border-white/10 cursor-pointer">
-                        <img 
-                          src="https://images.pexels.com/photos/3760067/pexels-photo-3760067.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
-                          alt="Video thumbnail of a professional explaining the service"
-                          className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                        <div className="absolute inset-0 flex items-center justify-center">
-                            <button className="text-white/80 hover:text-white transition-all duration-300 transform group-hover:scale-110">
-                                <span className="sr-only">Play Video</span>
-                                <PlayIcon />
-                            </button>
-                        </div>
+                {/* Right Column (Wistia Video) */}
+                <div className="fade-in-up md:order-last" style={{ transitionDelay: '200ms' }}>
+                    <div className="w-full rounded-lg shadow-2xl overflow-hidden border-2 border-white/10">
+                        <wistia-player media-id="c5suobwacz" aspect="1.7777777777777777"></wistia-player>
                     </div>
                 </div>
             </div>

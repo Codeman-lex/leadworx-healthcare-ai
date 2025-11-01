@@ -99,7 +99,7 @@ const TrustedBy: React.FC = () => {
     <section ref={sectionRef} className="bg-neutral-bg-light py-20 md:py-24 border-b border-neutral-line">
       <div className="container mx-auto">
         <div className="text-center fade-in-up px-6">
-          <h3 className="font-sans text-sm font-semibold text-text-secondary tracking-widest uppercase">
+          <h3 className="font-sans text-lg font-bold text-text-primary tracking-wider uppercase">
             Trusted By <span className="text-brand-purple">100+</span> Aesthetic Clinics Internationally
           </h3>
         </div>
