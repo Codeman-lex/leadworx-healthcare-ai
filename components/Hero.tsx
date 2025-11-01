@@ -1,12 +1,10 @@
-// FIX: Added a triple-slash directive to reference React's types and resolve JSX-related TypeScript errors.
-/// <reference types="react" />
-
+// FIX: Removed the unnecessary triple-slash directive for React types. The standard 'import React' is sufficient.
 // FIX: Added a global type declaration for the 'wistia-player' custom element
 // to ensure it is correctly picked up by the TypeScript compiler across the project.
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      'wistia-player': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement> & { mediaId?: string; aspect?: string }, HTMLElement>;
+      'wistia-player': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement> & { 'media-id'?: string; aspect?: string }, HTMLElement>;
     }
   }
 }
@@ -65,8 +63,7 @@ const Hero: React.FC<HeroProps> = ({ ctaAction }) => {
                 {/* Right Column (Wistia Video) */}
                 <div className="fade-in-up md:order-last" style={{ transitionDelay: '200ms' }}>
                     <div className="w-full rounded-lg shadow-2xl overflow-hidden border-2 border-white/10">
-                        {/* FIX: Changed 'media-id' to 'mediaId' to be a valid JSX attribute. */}
-                        <wistia-player mediaId="c5suobwacz" aspect="1.7777777777777777"></wistia-player>
+                        <wistia-player media-id="c5suobwacz" aspect="1.7777777777777777"></wistia-player>
                     </div>
                 </div>
             </div>

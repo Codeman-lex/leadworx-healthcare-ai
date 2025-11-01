@@ -1,6 +1,4 @@
-// FIX: Added a triple-slash directive to reference React's types and resolve JSX-related TypeScript errors.
-/// <reference types="react" />
-
+// FIX: Removed the unnecessary triple-slash directive for React types. The standard 'import React' is sufficient.
 import React from 'react';
 
 interface FooterProps {
