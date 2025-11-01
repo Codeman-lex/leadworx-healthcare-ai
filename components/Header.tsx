@@ -1,3 +1,6 @@
+// FIX: Added a triple-slash directive to reference React's types and resolve JSX-related TypeScript errors.
+/// <reference types="react" />
+
 import React, { useState, useEffect } from 'react';
 
 interface HeaderProps {
@@ -33,10 +36,26 @@ const Header: React.FC<HeaderProps> = ({ onNavigate }) => {
     <header className={`sticky top-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-neutral-bg/80 backdrop-blur-lg border-b border-neutral-line' : 'bg-transparent'}`}>
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-3 cursor-pointer" onClick={() => onNavigate('home')}>
-            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M16 3C8.82 3 3 8.82 3 16C3 23.18 8.82 29 16 29C23.18 29 29 23.18 29 16C29 8.82 23.18 3 16 3ZM5 16C5 9.925 9.925 5 16 5C22.075 5 27 9.925 27 16C27 22.075 22.075 27 16 27C9.925 27 5 22.075 5 16Z" fill="#5D00B5"/>
-              <path d="M17 15V11H15V15H11V17H15V21H17V17H21V15H17Z" fill="#5D00B5"/>
+          <div className="flex items-center space-x-2 cursor-pointer" onClick={() => onNavigate('home')}>
+            <svg width="36" height="36" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="new-logo-purple" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="#C084FC"/>
+                  <stop offset="100%" stopColor="#5D00B5"/>
+                </linearGradient>
+                <linearGradient id="new-logo-blue" x1="100%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stopColor="#93C5FD"/>
+                  <stop offset="100%" stopColor="#3B82F6"/>
+                </linearGradient>
+              </defs>
+              <g transform="translate(100,100) rotate(45)">
+                <path d="M 0 -85 A 85 85 0 0 1 85 0 L 65 0 A 65 65 0 0 0 0 -65 Z" fill="url(#new-logo-blue)"/>
+                <path d="M 0 85 A 85 85 0 0 1 -85 0 L -65 0 A 65 65 0 0 0 0 65 Z" fill="url(#new-logo-blue)"/>
+                <path d="M 85 0 A 85 85 0 0 1 0 85 L 0 65 A 65 65 0 0 0 65 0 Z" fill="url(#new-logo-purple)"/>
+                <path d="M -85 0 A 85 85 0 0 1 0 -85 L 0 -65 A 65 65 0 0 0 -65 0 Z" fill="url(#new-logo-purple)"/>
+              </g>
+              <circle cx="100" cy="100" r="20" fill="#fff" opacity="0.9"/>
+              <circle cx="100" cy="100" r="8" fill="#fff"/>
             </svg>
             <span className="font-display text-2xl font-bold text-text-primary">LeadWorxAI</span>
           </div>

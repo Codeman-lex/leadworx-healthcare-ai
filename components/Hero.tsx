@@ -1,3 +1,6 @@
+// FIX: Added a triple-slash directive to reference React's types and resolve JSX-related TypeScript errors.
+/// <reference types="react" />
+
 // FIX: Added a global type declaration for the 'wistia-player' custom element
 // to ensure it is correctly picked up by the TypeScript compiler across the project.
 declare global {

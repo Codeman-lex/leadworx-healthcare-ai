@@ -1,3 +1,6 @@
+// FIX: Added a triple-slash directive to reference React's types and resolve JSX-related TypeScript errors.
+/// <reference types="react" />
+
 import React from 'react';
 
 const RiskReversal: React.FC = () => {

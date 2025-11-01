@@ -1,3 +1,6 @@
+// FIX: Added a triple-slash directive to reference React's types and resolve JSX-related TypeScript errors.
+/// <reference types="react" />
+
 import React from 'react';
 import { RouteIcon, AttendanceIcon, AfterHoursIcon, AuditIcon } from './icons';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';

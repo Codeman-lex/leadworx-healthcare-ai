@@ -1,5 +1,4 @@
-// FIX: Removed the triple-slash directive for React types. It was causing a conflict
-// with the project's type resolution and preventing JSX types from loading correctly.
+/// <reference types="react" />
 
 import React from 'react';
 import ReactDOM from 'react-dom/client';
