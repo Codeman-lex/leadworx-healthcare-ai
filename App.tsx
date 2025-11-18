@@ -2,7 +2,6 @@
 import React, { useRef } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
-import Outcomes from './components/Outcomes';
 import ProvenSystem from './components/Mechanism';
 import Proof from './components/Proof';
 import RiskReversal from './components/RiskReversal';
@@ -13,6 +12,9 @@ import Footer from './components/Footer';
 import TrustedBy from './components/TrustedBy';
 import CaseStudies from './components/CaseStudies';
 import Reviews from './components/Reviews';
+import Problem from './components/Problem';
+import Solution from './components/Solution';
+import FeaturesAlternative from './components/FeaturesAlternative';
 
 const App: React.FC = () => {
   const sections = {
@@ -38,30 +40,42 @@ const App: React.FC = () => {
         <div ref={sections.home}>
           <Hero ctaAction={() => scrollToSection('getRollout')} />
         </div>
-        <div ref={sections.outcomes}>
-          <Outcomes />
-        </div>
+        
         <TrustedBy />
-        <div ref={sections.caseStudies}>
-          <CaseStudies />
-        </div>
+        
+        <Problem />
+        
+        <Solution />
+        
+        <FeaturesAlternative />
+
         <div ref={sections.reviews}>
           <Reviews />
         </div>
+
+        <div ref={sections.caseStudies}>
+          <CaseStudies />
+        </div>
+
+        <div ref={sections.howItWorks}>
+          <HowItWorks />
+        </div>
+        
+        {/* Kept Proof as redundant social proof or can be removed if too much */}
         <div ref={sections.proof}>
           <Proof />
         </div>
-        <ProvenSystem ctaAction={() => scrollToSection('getRollout')} />
-         <div ref={sections.howItWorks}>
-          <HowItWorks />
-        </div>
+        
         <RiskReversal />
+        
         <div ref={sections.whoWeServe}>
           <WhoWeServe />
         </div>
+        
         <div ref={sections.compliance}>
             <Faq />
         </div>
+        
         <div ref={sections.getRollout} className="h-16 sm:h-24 bg-neutral-bg">
           {/* Placeholder for a contact/rollout form section */}
         </div>
