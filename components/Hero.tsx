@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
-import { StarIcon, CheckIcon } from './icons';
+import { StarIcon } from './icons';
 
 interface HeroProps {
     ctaAction: () => void;
@@ -12,21 +12,21 @@ const Hero: React.FC<HeroProps> = ({ ctaAction }) => {
   return (
     <section 
       ref={sectionRef} 
-      className="relative overflow-hidden bg-brand-dark min-h-[100vh] flex items-center"
+      className="relative overflow-hidden bg-brand-dark min-h-screen flex items-center"
     >
         {/* Ambient Background Effects */}
-        <div className="absolute top-[-20%] left-[-10%] w-[50vw] h-[50vw] bg-brand-purple/30 rounded-full blur-[120px] animate-pulse-glow"></div>
-        <div className="absolute bottom-[-20%] right-[-10%] w-[40vw] h-[40vw] bg-brand-blue/20 rounded-full blur-[100px] animate-pulse-glow" style={{animationDelay: '1s'}}></div>
-        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 contrast-150 brightness-100 mix-blend-overlay"></div>
+        <div className="absolute top-[-20%] left-[-10%] w-[50vw] h-[50vw] bg-brand-purple/30 rounded-full blur-[120px] animate-pulse-glow pointer-events-none"></div>
+        <div className="absolute bottom-[-20%] right-[-10%] w-[40vw] h-[40vw] bg-brand-blue/20 rounded-full blur-[100px] animate-pulse-glow pointer-events-none" style={{animationDelay: '1s'}}></div>
+        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 contrast-150 brightness-100 mix-blend-overlay pointer-events-none"></div>
 
-        <div className="relative container mx-auto px-6 pt-32 pb-20 md:pt-40 md:pb-32">
+        <div className="relative container mx-auto px-4 sm:px-6 pt-32 pb-16 md:pt-40 md:pb-32">
             <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
                 
                 {/* Content Column */}
-                <div className="fade-in-up z-10 text-center lg:text-left">
+                <div className="fade-in-up z-10 text-center lg:text-left flex flex-col items-center lg:items-start">
                     
                     {/* Badge */}
-                    <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-md text-brand-purple-light text-xs font-bold tracking-widest uppercase mb-8 shadow-lg shadow-purple-500/10 hover:bg-white/10 transition-colors duration-300 cursor-default">
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 backdrop-blur-md text-brand-purple-light text-xs font-bold tracking-widest uppercase mb-8 shadow-lg shadow-purple-500/10 hover:bg-white/10 transition-colors duration-300 cursor-default">
                         <span className="relative flex h-2 w-2">
                           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-400 opacity-75"></span>
                           <span className="relative inline-flex rounded-full h-2 w-2 bg-purple-500"></span>
@@ -35,8 +35,8 @@ const Hero: React.FC<HeroProps> = ({ ctaAction }) => {
                     </div>
 
                     {/* Headline */}
-                    <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-extrabold text-white leading-[1.1] tracking-tight mb-6">
-                        Get <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-400">25+ Financially Qualified Patients</span> Automatically.
+                    <h1 className="font-display text-5xl sm:text-6xl md:text-7xl font-extrabold text-white leading-[1.1] tracking-tight mb-8 max-w-3xl lg:max-w-none mx-auto">
+                        Get <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-400 inline-block">25+ Financially Qualified</span> Patients Automatically.
                     </h1>
                     
                     {/* Subheadline */}
@@ -45,7 +45,7 @@ const Hero: React.FC<HeroProps> = ({ ctaAction }) => {
                     </p>
                     
                     {/* CTA Area */}
-                    <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-6">
+                    <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-6 w-full sm:w-auto">
                         <button onClick={ctaAction} className="group relative bg-brand-purple hover:bg-brand-purple-dark text-white font-bold py-4 px-8 rounded-full text-lg transition-all duration-300 transform hover:-translate-y-1 shadow-[0_0_20px_rgba(124,58,237,0.5)] hover:shadow-[0_0_30px_rgba(124,58,237,0.6)] w-full sm:w-auto overflow-hidden">
                             <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]"></div>
                             <span className="relative flex items-center justify-center gap-2">
@@ -53,40 +53,27 @@ const Hero: React.FC<HeroProps> = ({ ctaAction }) => {
                                 <svg className="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
                             </span>
                         </button>
-                        <div className="flex flex-col sm:flex-row items-center gap-3">
+                        
+                        {/* Social Proof */}
+                        <div className="flex flex-col sm:flex-row items-center gap-3 mt-4 sm:mt-0">
                              <div className="flex -space-x-3">
                                 {['https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=100&q=80', 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80', 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80'].map((src, i) => (
                                     <img key={i} className="inline-block h-10 w-10 rounded-full ring-2 ring-brand-dark grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-300 object-cover" src={src} alt="User" />
                                 ))}
                             </div>
-                            <div className="text-left">
-                                <div className="flex items-center justify-center sm:justify-start gap-0.5">
+                            <div className="text-left flex flex-row sm:flex-col gap-2 sm:gap-0 items-center sm:items-start">
+                                <div className="flex items-center">
                                     {[...Array(5)].map((_, i) => <StarIcon key={i} className="text-yellow-400 w-4 h-4 fill-current" />)}
                                 </div>
-                                <p className="text-xs text-slate-400 font-medium mt-0.5">Trusted by 100+ Clinics</p>
+                                <p className="text-xs text-slate-400 font-medium sm:mt-0.5">Trusted by 100+ Clinics</p>
                             </div>
                         </div>
                     </div>
 
-                    {/* Mini Benefits */}
-                    <div className="mt-12 flex flex-wrap justify-center lg:justify-start gap-y-2 gap-x-6 text-sm text-slate-400">
-                         <div className="flex items-center gap-2">
-                            <div className="p-1 rounded-full bg-green-500/10 text-green-400"><CheckIcon /></div>
-                            <span>HIPAA Compliant</span>
-                         </div>
-                         <div className="flex items-center gap-2">
-                            <div className="p-1 rounded-full bg-blue-500/10 text-blue-400"><CheckIcon /></div>
-                            <span>Integrates with EHR</span>
-                         </div>
-                         <div className="flex items-center gap-2">
-                            <div className="p-1 rounded-full bg-purple-500/10 text-purple-400"><CheckIcon /></div>
-                            <span>Results Guaranteed</span>
-                         </div>
-                    </div>
                 </div>
                 
                 {/* Visual Column */}
-                <div className="fade-in-up lg:order-last z-10 relative" style={{ transitionDelay: '200ms' }}>
+                <div className="fade-in-up lg:order-last z-10 relative mt-12 lg:mt-0" style={{ transitionDelay: '200ms' }}>
                     {/* Decorative elements around the video */}
                     <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-blue-600 rounded-2xl blur-lg opacity-40 animate-pulse-glow"></div>
                     
