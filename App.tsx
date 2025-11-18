@@ -12,11 +12,13 @@ import Faq from './components/Faq';
 import Footer from './components/Footer';
 import TrustedBy from './components/TrustedBy';
 import CaseStudies from './components/CaseStudies';
+import Reviews from './components/Reviews';
 
 const App: React.FC = () => {
   const sections = {
     home: useRef<HTMLDivElement>(null),
     caseStudies: useRef<HTMLDivElement>(null),
+    reviews: useRef<HTMLDivElement>(null),
     howItWorks: useRef<HTMLDivElement>(null),
     outcomes: useRef<HTMLDivElement>(null),
     proof: useRef<HTMLDivElement>(null),
@@ -42,6 +44,9 @@ const App: React.FC = () => {
         <TrustedBy />
         <div ref={sections.caseStudies}>
           <CaseStudies />
+        </div>
+        <div ref={sections.reviews}>
+          <Reviews />
         </div>
         <div ref={sections.proof}>
           <Proof />

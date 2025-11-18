@@ -7,9 +7,9 @@ interface FooterProps {
 
 const NAV_LINKS = [
   { name: 'Case Studies', id: 'caseStudies' },
+  { name: 'Reviews', id: 'reviews' },
   { name: 'Outcomes', id: 'outcomes' },
   { name: 'How It Works', id: 'howItWorks' },
-  { name: 'Proof', id: 'proof' },
   { name: 'Who We Serve', id: 'whoWeServe' },
   { name: 'Compliance', id: 'compliance' },
 ];
