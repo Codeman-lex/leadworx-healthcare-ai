@@ -1,4 +1,4 @@
-// FIX: Removed the unnecessary triple-slash directive for React types. The standard 'import React' is sufficient.
+
 import React, { useState, useEffect } from 'react';
 
 interface HeaderProps {
@@ -6,10 +6,10 @@ interface HeaderProps {
 }
 
 const NAV_LINKS = [
+  { name: 'Case Studies', id: 'caseStudies' },
   { name: 'Outcomes', id: 'outcomes' },
   { name: 'How It Works', id: 'howItWorks' },
   { name: 'Proof', id: 'proof' },
-  { name: 'Who We Serve', id: 'whoWeServe' },
   { name: 'Compliance', id: 'compliance' },
 ];
 
@@ -31,8 +31,8 @@ const Header: React.FC<HeaderProps> = ({ onNavigate }) => {
   }
 
   return (
-    <header className={`sticky top-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-neutral-bg/80 backdrop-blur-lg border-b border-neutral-line' : 'bg-transparent'}`}>
-      <div className="container mx-auto px-6 py-4">
+    <header className={`sticky top-0 z-50 transition-all duration-500 ${isScrolled ? 'bg-neutral-bg/80 backdrop-blur-lg border-b border-neutral-line shadow-md' : 'bg-transparent'}`}>
+      <div className="container mx-auto px-4 sm:px-6 py-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-2 cursor-pointer" onClick={() => onNavigate('home')}>
             <svg width="36" height="36" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">

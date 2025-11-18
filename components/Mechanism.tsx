@@ -1,10 +1,24 @@
-// FIX: Removed the unnecessary triple-slash directive for React types. The standard 'import React' is sufficient.
 import React from 'react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 interface ProvenSystemProps {
     ctaAction: () => void;
 }
+
+const authorityData = [
+    { text: 'HIPAA-aware', animation: 'animate-glow-purple' },
+    { text: 'BAA available', animation: 'animate-glow-blue', delay: 'delay-100ms' },
+    { text: 'PHI safeguarded', animation: 'animate-glow-teal', delay: 'delay-200ms' },
+    { text: 'Owner dashboard', animation: 'animate-glow-green', delay: 'delay-300ms' },
+    { text: 'U.S./U.K./CA Practices', animation: 'animate-glow-pink', delay: 'delay-400ms' },
+];
+
+const AuthorityChip: React.FC<{ children: React.ReactNode; animationClass: string; animationDelay: string }> = ({ children, animationClass, animationDelay }) => (
+  <div className={`flex items-center space-x-2 bg-neutral-bg-light border border-neutral-line rounded-full px-4 py-2 text-sm text-text-primary font-medium cursor-default shadow-sm ${animationClass} ${animationDelay}`}>
+    <svg className="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
+    <span>{children}</span>
+  </div>
+);
 
 const benefits = [
     'Attract high-value patients consistently',
@@ -28,7 +42,7 @@ const ProvenSystem: React.FC<ProvenSystemProps> = ({ ctaAction }) => {
 
     return (
         <section ref={sectionRef} className="bg-neutral-bg py-20 md:py-24">
-            <div className="container mx-auto px-6">
+            <div className="container mx-auto px-4 sm:px-6">
                 <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
                     {/* Image Column */}
                     <div className="fade-in-up">
@@ -55,6 +69,14 @@ const ProvenSystem: React.FC<ProvenSystemProps> = ({ ctaAction }) => {
                             We maximize your bookings and streamline clinic operations, making it simple to scale your practice without the typical growing pains.
                         </p>
                         
+                        <div className="mt-8 flex flex-wrap justify-start gap-3">
+                            {authorityData.map(item => (
+                                <AuthorityChip key={item.text} animationClass={item.animation} animationDelay={item.delay || ''}>
+                                    {item.text}
+                                </AuthorityChip>
+                            ))}
+                        </div>
+
                         <div className="mt-8 bg-neutral-bg-light border border-neutral-line rounded-xl shadow-sm p-8">
                             <div className="grid sm:grid-cols-2 gap-x-8 gap-y-4">
                                 {benefits.map((benefit, index) => (

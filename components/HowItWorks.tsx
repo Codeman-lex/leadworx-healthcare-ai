@@ -1,4 +1,3 @@
-// FIX: Removed the unnecessary triple-slash directive for React types. The standard 'import React' is sufficient.
 import React from 'react';
 import { RouteIcon, AttendanceIcon, AfterHoursIcon, AuditIcon } from './icons';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
@@ -22,7 +21,7 @@ const HowItWorks: React.FC = () => {
   const sectionRef = useScrollAnimation();
   return (
     <section ref={sectionRef} className="bg-neutral-bg-light py-20 md:py-24 border-y border-neutral-line">
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto px-4 sm:px-6">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 items-center">
             
             <div className="relative fade-in-up" style={{transitionDelay: '200ms'}}>

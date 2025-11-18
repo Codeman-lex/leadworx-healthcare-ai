@@ -1,4 +1,3 @@
-// FIX: Removed the unnecessary triple-slash directive for React types. The standard 'import React' is sufficient.
 import React from 'react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
@@ -99,7 +98,7 @@ const TrustedBy: React.FC = () => {
   return (
     <section ref={sectionRef} className="bg-neutral-bg-light py-20 md:py-24 border-b border-neutral-line">
       <div className="container mx-auto">
-        <div className="text-center fade-in-up px-6">
+        <div className="text-center fade-in-up px-4 sm:px-6">
           <h3 className="font-sans text-lg font-bold text-text-primary tracking-wider uppercase">
             Trusted By <span className="text-brand-purple">100+</span> Aesthetic Clinics Internationally
           </h3>

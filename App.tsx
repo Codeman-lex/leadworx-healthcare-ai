@@ -1,8 +1,7 @@
-// FIX: Removed the unnecessary triple-slash directive for React types. The standard 'import React' is sufficient.
+
 import React, { useRef } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
-import AuthorityStrip from './components/AuthorityStrip';
 import Outcomes from './components/Outcomes';
 import ProvenSystem from './components/Mechanism';
 import Proof from './components/Proof';
@@ -12,10 +11,12 @@ import HowItWorks from './components/HowItWorks';
 import Faq from './components/Faq';
 import Footer from './components/Footer';
 import TrustedBy from './components/TrustedBy';
+import CaseStudies from './components/CaseStudies';
 
 const App: React.FC = () => {
   const sections = {
     home: useRef<HTMLDivElement>(null),
+    caseStudies: useRef<HTMLDivElement>(null),
     howItWorks: useRef<HTMLDivElement>(null),
     outcomes: useRef<HTMLDivElement>(null),
     proof: useRef<HTMLDivElement>(null),
@@ -38,12 +39,14 @@ const App: React.FC = () => {
         <div ref={sections.outcomes}>
           <Outcomes />
         </div>
-        <AuthorityStrip />
-        <ProvenSystem ctaAction={() => scrollToSection('getRollout')} />
         <TrustedBy />
+        <div ref={sections.caseStudies}>
+          <CaseStudies />
+        </div>
         <div ref={sections.proof}>
           <Proof />
         </div>
+        <ProvenSystem ctaAction={() => scrollToSection('getRollout')} />
          <div ref={sections.howItWorks}>
           <HowItWorks />
         </div>
@@ -54,7 +57,7 @@ const App: React.FC = () => {
         <div ref={sections.compliance}>
             <Faq />
         </div>
-        <div ref={sections.getRollout} className="h-24 bg-neutral-bg">
+        <div ref={sections.getRollout} className="h-16 sm:h-24 bg-neutral-bg">
           {/* Placeholder for a contact/rollout form section */}
         </div>
       </main>

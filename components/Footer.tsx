@@ -1,4 +1,4 @@
-// FIX: Removed the unnecessary triple-slash directive for React types. The standard 'import React' is sufficient.
+
 import React from 'react';
 
 interface FooterProps {
@@ -6,6 +6,7 @@ interface FooterProps {
 }
 
 const NAV_LINKS = [
+  { name: 'Case Studies', id: 'caseStudies' },
   { name: 'Outcomes', id: 'outcomes' },
   { name: 'How It Works', id: 'howItWorks' },
   { name: 'Proof', id: 'proof' },
@@ -17,7 +18,7 @@ const NAV_LINKS = [
 const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
   return (
     <footer className="bg-neutral-bg-light border-t border-neutral-line">
-      <div className="container mx-auto px-6 py-12">
+      <div className="container mx-auto px-4 sm:px-6 py-12">
         <div className="grid md:grid-cols-3 gap-8 text-center md:text-left">
           <div className="md:col-span-1">
               <h3 className="font-display text-2xl font-bold text-text-primary">

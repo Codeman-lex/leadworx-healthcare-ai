@@ -1,17 +1,8 @@
-// FIX: Removed the unnecessary triple-slash directive for React types. The standard 'import React' is sufficient.
-// FIX: Added a global type declaration for the 'wistia-player' custom element
-// to ensure it is correctly picked up by the TypeScript compiler across the project.
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'wistia-player': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement> & { 'media-id'?: string; aspect?: string }, HTMLElement>;
-    }
-  }
-}
-
 import React from 'react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import { StarIcon } from './icons';
+
+// Removed problematic global JSX declaration
 
 interface HeroProps {
     ctaAction: () => void;
@@ -24,9 +15,16 @@ const Hero: React.FC<HeroProps> = ({ ctaAction }) => {
       ref={sectionRef} 
       className="relative bg-hero-bg bg-cover bg-center"
     >
-        <div className="absolute inset-0 bg-gray-900/75" aria-hidden="true"></div>
+        <div className="absolute inset-0 bg-gray-900/70" aria-hidden="true"></div>
+        <div 
+            className="absolute inset-0 opacity-10"
+            style={{
+                backgroundImage: `url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-rule='evenodd'%3E%3Cpath d='M9 11h2v-2H9v2zm-4 4h2v-2H5v2zm8 0h2v-2h-2v2zm-4-8h2v-2H9v2zM5 7h2V5H5v2zm8 0h2V5h-2v2z'/%3E%3C/g%3E%3C/svg%3E")`,
+            }}
+            aria-hidden="true"
+        ></div>
 
-        <div className="relative container mx-auto px-6 py-24 md:py-32">
+        <div className="relative container mx-auto px-4 sm:px-6 py-24 md:py-32">
             <div className="grid md:grid-cols-2 gap-12 items-center">
                 {/* Left Column */}
                 <div className="fade-in-up text-center md:text-left">
@@ -63,7 +61,7 @@ const Hero: React.FC<HeroProps> = ({ ctaAction }) => {
                 {/* Right Column (Wistia Video) */}
                 <div className="fade-in-up md:order-last" style={{ transitionDelay: '200ms' }}>
                     <div className="w-full rounded-lg shadow-2xl overflow-hidden border-2 border-white/10">
-                        <wistia-player media-id="c5suobwacz" aspect="1.7777777777777777"></wistia-player>
+                        {React.createElement('wistia-player', { 'media-id': 'c5suobwacz', aspect: '1.7777777777777777' })}
                     </div>
                 </div>
             </div>

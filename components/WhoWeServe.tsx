@@ -1,4 +1,3 @@
-// FIX: Removed the unnecessary triple-slash directive for React types. The standard 'import React' is sufficient.
 import React, { useState } from 'react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
@@ -26,7 +25,7 @@ const WhoWeServe: React.FC = () => {
   return (
     <section ref={sectionRef} className="relative bg-serve-bg bg-cover bg-center py-20 md:py-24">
         <div className="absolute inset-0 bg-neutral-bg/95 backdrop-blur-sm" aria-hidden="true"></div>
-      <div className="container mx-auto px-6 text-center max-w-4xl relative">
+      <div className="container mx-auto px-4 sm:px-6 text-center max-w-4xl relative">
         <div className="fade-in-up">
           <h2 className="font-display text-4xl md:text-5xl font-bold text-text-primary">
             Built for the operational realities of private practice.

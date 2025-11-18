@@ -1,4 +1,3 @@
-// FIX: Removed the unnecessary triple-slash directive for React types. The standard 'import React' is sufficient.
 import React from 'react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
@@ -21,7 +20,7 @@ const AuthorityStrip: React.FC = () => {
     const sectionRef = useScrollAnimation();
   return (
     <section ref={sectionRef} className="bg-neutral-bg-light border-y border-neutral-line py-10 fade-in-up">
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto px-4 sm:px-6">
         <div className="flex flex-wrap justify-center gap-4 md:gap-6">
           {authorityData.map(item => (
               <AuthorityChip key={item.text} animationClass={item.animation} animationDelay={item.delay || ''}>

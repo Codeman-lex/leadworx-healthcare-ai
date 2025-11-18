@@ -1,4 +1,3 @@
-// FIX: Removed the unnecessary triple-slash directive for React types. The standard 'import React' is sufficient.
 import React from 'react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
@@ -7,6 +6,7 @@ interface FaqItemProps {
   children: React.ReactNode;
 }
 
+// FIX: Corrected typo from FqItemProps to FaqItemProps
 const FaqItem: React.FC<FaqItemProps> = ({ question, children }) => (
     <details className="group border-b border-neutral-line py-6 last:border-b-0">
         <summary className="flex items-center justify-between cursor-pointer list-none">
@@ -27,7 +27,7 @@ const Faq: React.FC = () => {
   const sectionRef = useScrollAnimation();
   return (
     <section ref={sectionRef} className="bg-faq-bg py-20 md:py-24">
-      <div className="container mx-auto px-6 max-w-4xl">
+      <div className="container mx-auto px-4 sm:px-6 max-w-4xl">
         <div className="text-center fade-in-up">
           <p className="font-semibold text-brand-purple">COMPLIANCE & INTEGRATION</p>
           <h2 className="mt-2 font-display text-4xl md:text-5xl font-bold text-text-primary">

@@ -1,4 +1,3 @@
-// FIX: Removed the unnecessary triple-slash directive for React types. The standard 'import React' is sufficient.
 import React from 'react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import { StarIcon } from './icons';
@@ -39,11 +38,11 @@ const testimonials = [
 const allTestimonials = [...testimonials, ...testimonials]; // Duplicate for seamless scroll
 
 const TestimonialCard: React.FC<{ testimonial: typeof testimonials[0] }> = ({ testimonial }) => (
-  <div className="flex-shrink-0 w-[420px] bg-neutral-bg-light border border-brand-purple/50 rounded-xl p-8 shadow-lg mx-4 h-full flex flex-col">
+  <div className="flex-shrink-0 w-[320px] sm:w-[380px] lg:w-[420px] bg-neutral-bg-light border border-brand-purple/50 rounded-xl p-6 sm:p-8 shadow-lg mx-2 sm:mx-3 lg:mx-4 h-full flex flex-col">
     <div className="flex">
       {[...Array(5)].map((_, i) => <StarIcon key={i} className="text-brand-purple" />)}
     </div>
-    <h3 className="font-display text-3xl font-bold text-brand-purple mt-4">
+    <h3 className="font-display text-2xl sm:text-3xl font-bold text-brand-purple mt-4">
       {testimonial.headline}
     </h3>
     <p className="text-text-secondary mt-4 leading-relaxed flex-grow">
@@ -61,7 +60,7 @@ const Proof: React.FC = () => {
   return (
     <section ref={sectionRef} className="bg-neutral-bg py-20 md:py-24 overflow-hidden">
       <div className="container mx-auto">
-        <div className="text-center max-w-3xl mx-auto fade-in-up px-6">
+        <div className="text-center max-w-3xl mx-auto fade-in-up px-4 sm:px-6">
           <p className="font-semibold text-brand-purple flex items-center justify-center gap-2">
             <span className="w-2 h-2 bg-brand-purple rounded-full"></span>
             TESTIMONIALS & RESULTS
