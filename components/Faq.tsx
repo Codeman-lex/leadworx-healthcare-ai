@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
@@ -6,18 +7,17 @@ interface FaqItemProps {
   children: React.ReactNode;
 }
 
-// FIX: Corrected typo from FqItemProps to FaqItemProps
 const FaqItem: React.FC<FaqItemProps> = ({ question, children }) => (
-    <details className="group border-b border-neutral-line py-6 last:border-b-0">
-        <summary className="flex items-center justify-between cursor-pointer list-none">
-            <span className="font-display text-xl md:text-2xl font-medium text-text-primary group-hover:text-brand-purple transition-colors">
+    <details className="group bg-white border border-slate-200 rounded-2xl p-6 [&_summary::-webkit-details-marker]:hidden transition-all duration-300 hover:shadow-lg hover:border-purple-100 open:border-purple-200 open:ring-1 open:ring-purple-100">
+        <summary className="flex items-center justify-between cursor-pointer list-none text-text-primary">
+            <span className="font-display text-lg md:text-xl font-bold group-hover:text-brand-purple transition-colors">
                 {question}
             </span>
-            <span className="transition-transform transform group-open:rotate-180">
-                <svg className="w-6 h-6 text-text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
+            <span className="transition-transform transform group-open:rotate-180 text-brand-purple">
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
             </span>
         </summary>
-        <div className="mt-4 text-text-secondary leading-relaxed text-base max-w-3xl">
+        <div className="mt-4 text-slate-600 leading-relaxed text-base">
             {children}
         </div>
     </details>
@@ -26,15 +26,17 @@ const FaqItem: React.FC<FaqItemProps> = ({ question, children }) => (
 const Faq: React.FC = () => {
   const sectionRef = useScrollAnimation();
   return (
-    <section ref={sectionRef} className="bg-faq-bg py-20 md:py-24">
-      <div className="container mx-auto px-4 sm:px-6 max-w-4xl">
-        <div className="text-center fade-in-up">
-          <p className="font-semibold text-brand-purple">COMPLIANCE & INTEGRATION</p>
-          <h2 className="mt-2 font-display text-4xl md:text-5xl font-bold text-text-primary">
+    <section ref={sectionRef} className="bg-white py-24 border-t border-neutral-line">
+      <div className="container mx-auto px-4 sm:px-6 max-w-3xl">
+        <div className="text-center fade-in-up mb-16">
+          <p className="text-brand-purple font-bold tracking-widest text-xs uppercase mb-4">
+             Compliance & Integration
+          </p>
+          <h2 className="font-display text-4xl md:text-5xl font-bold text-text-primary">
             Frequently Asked Questions
           </h2>
         </div>
-        <div className="mt-12 bg-neutral-bg-light border border-neutral-line rounded-lg p-4 md:p-8 shadow-sm fade-in-up" style={{transitionDelay: '200ms'}}>
+        <div className="space-y-4 fade-in-up delay-200ms">
             <FaqItem question="What is your HIPAA/BAA posture?">
                 We operate under HIPAA-aware workflows, and a Business Associate Agreement (BAA) is available for all clients. Our system is designed for compliance, with every patient touchpoint meticulously audit-logged to provide a clear, documented history of communication and access.
             </FaqItem>

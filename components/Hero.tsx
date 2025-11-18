@@ -1,6 +1,7 @@
+
 import React from 'react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
-import { StarIcon } from './icons';
+import { StarIcon, CheckIcon } from './icons';
 
 interface HeroProps {
     ctaAction: () => void;
@@ -11,62 +12,127 @@ const Hero: React.FC<HeroProps> = ({ ctaAction }) => {
   return (
     <section 
       ref={sectionRef} 
-      className="relative bg-hero-bg bg-cover bg-center"
+      className="relative overflow-hidden bg-brand-dark min-h-[100vh] flex items-center"
     >
-        {/* Stronger overlay for the new premium gradient background */}
-        <div className="absolute inset-0 bg-slate-900/70 backdrop-blur-[1px]" aria-hidden="true"></div>
-        
-        {/* Subtle mesh pattern overlay */}
-        <div 
-            className="absolute inset-0 opacity-10"
-            style={{
-                backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-            }}
-            aria-hidden="true"
-        ></div>
+        {/* Ambient Background Effects */}
+        <div className="absolute top-[-20%] left-[-10%] w-[50vw] h-[50vw] bg-brand-purple/30 rounded-full blur-[120px] animate-pulse-glow"></div>
+        <div className="absolute bottom-[-20%] right-[-10%] w-[40vw] h-[40vw] bg-brand-blue/20 rounded-full blur-[100px] animate-pulse-glow" style={{animationDelay: '1s'}}></div>
+        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 contrast-150 brightness-100 mix-blend-overlay"></div>
 
-        <div className="relative container mx-auto px-6 pt-32 pb-20 md:pt-48 md:pb-32">
-            <div className="grid md:grid-cols-2 gap-16 items-center">
-                {/* Left Column */}
-                <div className="fade-in-up text-center md:text-left">
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 backdrop-blur-md text-purple-100 text-xs font-bold tracking-widest uppercase mb-6">
-                        <span className="w-2 h-2 rounded-full bg-purple-400 animate-pulse"></span>
+        <div className="relative container mx-auto px-6 pt-32 pb-20 md:pt-40 md:pb-32">
+            <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+                
+                {/* Content Column */}
+                <div className="fade-in-up z-10 text-center lg:text-left">
+                    
+                    {/* Badge */}
+                    <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-md text-brand-purple-light text-xs font-bold tracking-widest uppercase mb-8 shadow-lg shadow-purple-500/10 hover:bg-white/10 transition-colors duration-300 cursor-default">
+                        <span className="relative flex h-2 w-2">
+                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-400 opacity-75"></span>
+                          <span className="relative inline-flex rounded-full h-2 w-2 bg-purple-500"></span>
+                        </span>
                         AI-Powered Patient Acquisition
                     </div>
-                    <h1 className="font-display text-5xl md:text-7xl font-bold text-white leading-[1.1] tracking-tight">
-                        Get 25+ Financially <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-300 to-blue-300">Qualified Patients</span> Automatically.
+
+                    {/* Headline */}
+                    <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-extrabold text-white leading-[1.1] tracking-tight mb-6">
+                        Get <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-400">25+ Financially Qualified Patients</span> Automatically.
                     </h1>
-                    <p className="mt-8 max-w-2xl mx-auto md:mx-0 text-lg md:text-xl text-slate-300 leading-relaxed font-light">
-                        We install an AI-driven infrastructure that delivers financially qualified patients to your practice, without your staff making a single phone call.
+                    
+                    {/* Subheadline */}
+                    <p className="max-w-xl mx-auto lg:mx-0 text-lg md:text-xl text-slate-400 leading-relaxed font-light mb-10">
+                        We install a proprietary AI infrastructure that fills your calendar with financially qualified patients—without your staff making a single phone call.
                     </p>
-                    <div className="mt-10 flex flex-col sm:flex-row items-center justify-center md:justify-start gap-6">
-                        <button onClick={ctaAction} className="bg-brand-purple hover:bg-brand-purple-dark text-white font-bold py-4 px-10 rounded-xl text-lg transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-purple-500/25 w-full sm:w-auto border border-purple-400/20 ring-1 ring-purple-500/50">
-                            Book a Free Call
+                    
+                    {/* CTA Area */}
+                    <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-6">
+                        <button onClick={ctaAction} className="group relative bg-brand-purple hover:bg-brand-purple-dark text-white font-bold py-4 px-8 rounded-full text-lg transition-all duration-300 transform hover:-translate-y-1 shadow-[0_0_20px_rgba(124,58,237,0.5)] hover:shadow-[0_0_30px_rgba(124,58,237,0.6)] w-full sm:w-auto overflow-hidden">
+                            <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]"></div>
+                            <span className="relative flex items-center justify-center gap-2">
+                                Book a Free Strategy Call
+                                <svg className="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                            </span>
                         </button>
-                        <div className="flex items-center gap-4">
-                            <div className="flex -space-x-3">
-                                <img className="inline-block h-12 w-12 rounded-full ring-2 ring-slate-900 grayscale hover:grayscale-0 transition-all" src="https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" />
-                                <img className="inline-block h-12 w-12 rounded-full ring-2 ring-slate-900 grayscale hover:grayscale-0 transition-all" src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" />
-                                <img className="inline-block h-12 w-12 rounded-full ring-2 ring-slate-900 grayscale hover:grayscale-0 transition-all" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80" alt="" />
+                        <div className="flex flex-col sm:flex-row items-center gap-3">
+                             <div className="flex -space-x-3">
+                                {['https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=100&q=80', 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80', 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80'].map((src, i) => (
+                                    <img key={i} className="inline-block h-10 w-10 rounded-full ring-2 ring-brand-dark grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-300 object-cover" src={src} alt="User" />
+                                ))}
                             </div>
-                            <div>
+                            <div className="text-left">
                                 <div className="flex items-center justify-center sm:justify-start gap-0.5">
-                                    {[...Array(5)].map((_, i) => <StarIcon key={i} className="text-yellow-400 w-4 h-4" />)}
+                                    {[...Array(5)].map((_, i) => <StarIcon key={i} className="text-yellow-400 w-4 h-4 fill-current" />)}
                                 </div>
-                                <p className="text-sm text-slate-400 font-medium mt-0.5">Trusted by 100+ Clinics</p>
+                                <p className="text-xs text-slate-400 font-medium mt-0.5">Trusted by 100+ Clinics</p>
                             </div>
                         </div>
                     </div>
+
+                    {/* Mini Benefits */}
+                    <div className="mt-12 flex flex-wrap justify-center lg:justify-start gap-y-2 gap-x-6 text-sm text-slate-400">
+                         <div className="flex items-center gap-2">
+                            <div className="p-1 rounded-full bg-green-500/10 text-green-400"><CheckIcon /></div>
+                            <span>HIPAA Compliant</span>
+                         </div>
+                         <div className="flex items-center gap-2">
+                            <div className="p-1 rounded-full bg-blue-500/10 text-blue-400"><CheckIcon /></div>
+                            <span>Integrates with EHR</span>
+                         </div>
+                         <div className="flex items-center gap-2">
+                            <div className="p-1 rounded-full bg-purple-500/10 text-purple-400"><CheckIcon /></div>
+                            <span>Results Guaranteed</span>
+                         </div>
+                    </div>
                 </div>
                 
-                {/* Right Column (Wistia Video) */}
-                <div className="fade-in-up md:order-last" style={{ transitionDelay: '200ms' }}>
-                    <div className="w-full rounded-2xl shadow-2xl overflow-hidden border-4 border-white/10 bg-slate-900 relative group">
-                         <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-blue-600 rounded-xl blur opacity-25 group-hover:opacity-40 transition duration-1000 group-hover:duration-200"></div>
-                         <div className="relative rounded-xl overflow-hidden">
+                {/* Visual Column */}
+                <div className="fade-in-up lg:order-last z-10 relative" style={{ transitionDelay: '200ms' }}>
+                    {/* Decorative elements around the video */}
+                    <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-blue-600 rounded-2xl blur-lg opacity-40 animate-pulse-glow"></div>
+                    
+                    {/* Main Video Container */}
+                    <div className="relative rounded-2xl shadow-2xl overflow-hidden border border-white/10 bg-slate-900/80 backdrop-blur-sm transform hover:scale-[1.01] transition-transform duration-500 group">
+                         {/* Header of the 'App' Window */}
+                         <div className="bg-white/5 border-b border-white/5 p-3 flex items-center gap-2">
+                             <div className="flex gap-1.5">
+                                 <div className="w-2.5 h-2.5 rounded-full bg-red-500/50"></div>
+                                 <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/50"></div>
+                                 <div className="w-2.5 h-2.5 rounded-full bg-green-500/50"></div>
+                             </div>
+                             <div className="ml-2 px-3 py-1 rounded-full bg-black/40 text-[10px] text-gray-400 font-mono border border-white/5">
+                                 dashboard.leadworx.ai
+                             </div>
+                         </div>
+                         <div className="aspect-video relative bg-black">
                             {React.createElement('wistia-player', { 'media-id': 'c5suobwacz', aspect: '1.7777777777777777' })}
                          </div>
                     </div>
+
+                    {/* Floating Badge 1 */}
+                    <div className="absolute -top-6 -right-6 md:-right-12 bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-xl shadow-xl animate-float hidden md:block">
+                        <div className="flex items-center gap-3">
+                            <div className="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center text-green-400">
+                                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                            </div>
+                            <div>
+                                <p className="text-xs text-gray-300 uppercase tracking-wider font-bold">Revenue Added</p>
+                                <p className="text-xl font-bold text-white">+$12,450</p>
+                            </div>
+                        </div>
+                    </div>
+                     {/* Floating Badge 2 */}
+                    <div className="absolute -bottom-6 -left-6 md:-left-12 bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-xl shadow-xl animate-float hidden md:block" style={{animationDelay: '2s'}}>
+                        <div className="flex items-center gap-3">
+                            <div className="w-10 h-10 rounded-full bg-brand-purple/20 flex items-center justify-center text-brand-purple-light">
+                                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+                            </div>
+                            <div>
+                                <p className="text-xs text-gray-300 uppercase tracking-wider font-bold">New Bookings</p>
+                                <p className="text-xl font-bold text-white">42 This Week</p>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>

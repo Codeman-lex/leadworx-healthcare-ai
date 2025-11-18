@@ -15,20 +15,25 @@
           extend: {
             colors: {
               brand: {
-                purple: '#6D28D9', // Richer purple
-                'purple-dark': '#5B21B6',
-                'purple-light': '#DDD6FE',
+                purple: '#7C3AED', // Violet 600
+                'purple-dark': '#5B21B6', // Violet 800
+                'purple-light': '#E9D5FF', // Violet 200
+                'purple-glow': '#8B5CF6', // Violet 500
                 blue: '#2563EB',
                 'blue-dark': '#1E40AF',
+                dark: '#0B0F19', // Richer than black
+                surface: '#111827', // Dark gray surface
               },
               text: {
-                primary: '#0F172A', // Slate 900 - sharper than gray
-                secondary: '#475569', // Slate 600 - cleaner than gray
+                primary: '#0F172A', // Slate 900
+                secondary: '#475569', // Slate 600
+                light: '#E2E8F0', // Slate 200
+                muted: '#94A3B8', // Slate 400
               },
               neutral: {
-                bg: '#FAFAFA', // Crisp off-white
+                bg: '#FAFAFA',
                 'bg-light': '#FFFFFF',
-                line: '#E2E8F0', // Slate 200
+                line: '#E2E8F0',
               }
             },
             fontFamily: {
@@ -36,22 +41,34 @@
               sans: ['Inter', 'system-ui', 'sans-serif'],
             },
             boxShadow: {
-                'premium': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
-                'premium-hover': '0 20px 40px -5px rgba(0, 0, 0, 0.1)',
+                'premium': '0 10px 40px -10px rgba(0, 0, 0, 0.08)',
+                'premium-hover': '0 20px 60px -10px rgba(0, 0, 0, 0.12)',
+                'glow': '0 0 20px rgba(124, 58, 237, 0.3)',
+                'glow-strong': '0 0 50px rgba(124, 58, 237, 0.5)',
             },
             backgroundImage: {
-              'hero-bg': "url('https://images.unsplash.com/photo-1557683316-973673baf926?q=80&w=2564&auto=format&fit=crop')",
-              'serve-bg': "url('https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')",
+              'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+              'hero-glow': 'conic-gradient(from 90deg at 50% 50%, #00000000 50%, #7C3AED 100%)',
             },
             animation: {
-                'scroll': 'scroll 60s linear infinite',
-                'scroll-slow': 'scroll 90s linear infinite',
+                'scroll': 'scroll 40s linear infinite',
+                'scroll-slow': 'scroll 80s linear infinite',
+                'float': 'float 6s ease-in-out infinite',
+                'pulse-glow': 'pulse-glow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
             },
             keyframes: {
                 'scroll': {
                   '0%': { transform: 'translateX(0)' },
                   '100%': { transform: 'translateX(-50%)' },
                 },
+                'float': {
+                  '0%, 100%': { transform: 'translateY(0)' },
+                  '50%': { transform: 'translateY(-20px)' },
+                },
+                'pulse-glow': {
+                  '0%, 100%': { opacity: '0.5' },
+                  '50%': { opacity: '1' },
+                }
             }
           }
         }
@@ -64,33 +81,61 @@
         color: #0F172A;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
+        overflow-x: hidden;
       }
+      
+      ::selection {
+        background-color: #7C3AED;
+        color: white;
+      }
+
       h1, h2, h3, h4, h5, h6 {
         text-wrap: balance;
       }
+
       .fade-in-up {
         opacity: 0;
-        transform: translateY(20px);
-        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        transform: translateY(30px);
+        transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
       }
       .is-visible {
         opacity: 1;
         transform: translateY(0);
       }
-      .delay-100ms { animation-delay: 100ms; transition-delay: 100ms; }
-      .delay-200ms { animation-delay: 200ms; transition-delay: 200ms; }
-      .delay-300ms { animation-delay: 300ms; transition-delay: 300ms; }
-      .slider:hover .slider-track {
-        animation-play-state: paused;
+      
+      .delay-100ms { transition-delay: 100ms; }
+      .delay-200ms { transition-delay: 200ms; }
+      .delay-300ms { transition-delay: 300ms; }
+      .delay-400ms { transition-delay: 400ms; }
+
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar {
+        width: 10px;
       }
-      /* Hide scrollbar for Chrome, Safari and Opera */
-      .scrollbar-hide::-webkit-scrollbar {
-          display: none;
+      ::-webkit-scrollbar-track {
+        background: #f1f1f1;
       }
-      /* Hide scrollbar for IE, Edge and Firefox */
-      .scrollbar-hide {
-          -ms-overflow-style: none;  /* IE and Edge */
-          scrollbar-width: none;  /* Firefox */
+      ::-webkit-scrollbar-thumb {
+        background: #cbd5e1;
+        border-radius: 5px;
+        border: 2px solid #f1f1f1;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #94a3b8;
+      }
+
+      .glass {
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+      }
+      
+      .glass-dark {
+        background: rgba(17, 24, 39, 0.7);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
       }
     </style>
   <script type="importmap">

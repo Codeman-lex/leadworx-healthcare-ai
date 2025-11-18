@@ -17,48 +17,41 @@ interface CaseStudyProps {
 }
 
 const CaseStudyCard: React.FC<CaseStudyProps> = ({ niche, headline, stats, challenge, solution, image, delay }) => (
-  <div className={`bg-neutral-bg-light rounded-2xl overflow-hidden border border-neutral-line shadow-lg hover:shadow-xl transition-all duration-300 fade-in-up ${delay} flex flex-col`}>
-    <div className="h-48 overflow-hidden relative">
-      <img src={image} alt={headline} className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700" />
-      <div className="absolute top-4 left-4 bg-brand-purple/90 backdrop-blur-sm text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">
-        {niche}
-      </div>
-      <div className="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-black/60 to-transparent"></div>
+  <div className={`group relative overflow-hidden rounded-[2rem] bg-slate-900 fade-in-up ${delay}`}>
+    {/* Background Image with Gradient Overlay */}
+    <div className="absolute inset-0">
+      <img src={image} alt={headline} className="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-700 ease-out" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent"></div>
     </div>
-    
-    <div className="p-6 md:p-8 flex-1 flex flex-col">
-      <h3 className="font-display text-2xl font-bold text-text-primary leading-tight mb-6">
+
+    <div className="relative p-8 md:p-10 h-full flex flex-col justify-end min-h-[500px]">
+      <div className="mb-auto">
+         <span className="inline-block px-3 py-1 rounded-full bg-brand-purple/20 border border-brand-purple/30 text-brand-purple-light text-xs font-bold uppercase tracking-wider mb-4 backdrop-blur-md">
+            {niche}
+         </span>
+      </div>
+
+      <h3 className="font-display text-3xl font-bold text-white mb-6 leading-tight">
         {headline}
       </h3>
 
-      <div className="grid grid-cols-2 gap-4 mb-8">
+      <div className="grid grid-cols-2 gap-4 mb-8 border-t border-white/10 pt-6">
         {stats.map((stat, idx) => (
-          <div key={idx} className="bg-neutral-bg rounded-lg p-3 border border-neutral-line text-center">
-            <p className="text-brand-purple font-bold text-2xl md:text-3xl">{stat.value}</p>
-            <p className="text-xs text-text-secondary uppercase tracking-wider font-medium mt-1">{stat.label}</p>
+          <div key={idx}>
+            <p className="text-3xl font-bold text-brand-purple-light">{stat.value}</p>
+            <p className="text-xs text-slate-400 uppercase tracking-wider mt-1">{stat.label}</p>
           </div>
         ))}
       </div>
 
-      <div className="space-y-4 text-sm mb-6 flex-1">
-        <div>
-          <p className="font-bold text-text-primary mb-1 flex items-center gap-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-red-400"></span> The Challenge:
-          </p>
-          <p className="text-text-secondary leading-relaxed">{challenge}</p>
+      <div className="space-y-4 text-sm text-slate-300">
+        <div className="flex gap-3">
+           <div className="mt-1 w-1.5 h-1.5 rounded-full bg-red-500 shrink-0"></div>
+           <p><span className="font-bold text-white">The Challenge:</span> {challenge}</p>
         </div>
-        <div>
-           <p className="font-bold text-text-primary mb-1 flex items-center gap-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-green-500"></span> The LeadWorxAI Fix:
-          </p>
-          <p className="text-text-secondary leading-relaxed">{solution}</p>
-        </div>
-      </div>
-
-      <div className="pt-6 border-t border-neutral-line mt-auto">
-        <div className="flex items-center gap-2 text-brand-purple font-semibold text-sm">
-            <CheckIcon />
-            <span>Verified Outcome</span>
+         <div className="flex gap-3">
+           <div className="mt-1 w-1.5 h-1.5 rounded-full bg-green-500 shrink-0"></div>
+           <p><span className="font-bold text-white">The Fix:</span> {solution}</p>
         </div>
       </div>
     </div>
@@ -69,19 +62,24 @@ const CaseStudies: React.FC = () => {
   const sectionRef = useScrollAnimation();
 
   return (
-    <section ref={sectionRef} className="bg-neutral-bg py-20 md:py-24">
+    <section ref={sectionRef} className="bg-brand-dark py-24 overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6">
-        <div className="text-center max-w-3xl mx-auto fade-in-up mb-16">
-          <span className="inline-block bg-purple-100 text-brand-purple font-semibold px-4 py-1.5 rounded-full text-sm mb-4">
-            REAL RESULTS
-          </span>
-          <h2 className="font-display text-4xl md:text-5xl font-bold text-text-primary leading-tight">
-            We don't just promise growth. <br className="hidden md:block" />
-            <span className="text-brand-purple">We engineer it.</span>
-          </h2>
-          <p className="mt-6 text-lg text-text-secondary leading-relaxed">
-            See how LeadWorxAI has transformed private practices by installing our automated patient acquisition infrastructure.
-          </p>
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6 fade-in-up">
+          <div className="max-w-2xl">
+            <p className="text-brand-purple font-bold tracking-widest text-xs uppercase mb-4">
+                Real Results
+            </p>
+            <h2 className="font-display text-4xl md:text-5xl font-bold text-white leading-tight">
+               We don't just promise growth. <br/>
+               <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-400">We engineer it.</span>
+            </h2>
+          </div>
+          <div className="mb-2">
+             <button className="text-white border-b border-white/30 hover:border-white pb-1 transition-all hover:translate-x-1 flex items-center gap-2">
+                View all case studies 
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+             </button>
+          </div>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -93,8 +91,8 @@ const CaseStudies: React.FC = () => {
               { label: "Revenue Added", value: "+$52k" },
               { label: "New Consults", value: "48" }
             ]}
-            challenge="The clinic was relying entirely on word-of-mouth and sporadic Instagram posts. They had empty slots in their schedule and no predictable way to fill them."
-            solution="We installed our 'Database Reactivation' engine to wake up cold leads and launched a targeted high-ticket offer. The calendar was fully booked within 72 hours."
+            challenge="Relying on sporadic word-of-mouth, leaving unpredictable gaps in the schedule."
+            solution="Launched 'Database Reactivation' engine and high-ticket offer. Fully booked in 72h."
             delay="delay-100ms"
           />
 
@@ -106,8 +104,8 @@ const CaseStudies: React.FC = () => {
               { label: "No-Show Rate", value: "8%" },
               { label: "Saved Revenue", value: "$18k/mo" }
             ]}
-            challenge="The front desk was spending 4 hours a day calling to confirm appointments, yet 1 in 3 patients still ghosted, leaving the doctor with expensive gaps in the day."
-            solution="LeadWorxAI implemented multi-channel automated reminders (SMS/Email/Voice) and a 2-way AI booking agent that collects deposits for high-value slots."
+            challenge="Front desk spent 4h/day on confirmations, yet 1 in 3 patients still ghosted."
+            solution="Implemented multi-channel automated reminders and 2-way AI booking agent."
             delay="delay-200ms"
           />
 
@@ -119,8 +117,8 @@ const CaseStudies: React.FC = () => {
               { label: "Lead Volume", value: "93" },
               { label: "Cost Per Lead", value: "$14" }
             ]}
-            challenge="This practice was buying shared leads from a generic vendor. The leads were expensive, low quality, and often had already booked with a competitor."
-            solution="We brought their marketing in-house with a dedicated campaign and our 'Speed-to-Lead' AI. We contacted every inquiry in under 60 seconds, locking them in before competitors could."
+            challenge="Buying shared, low-quality leads that had already booked with competitors."
+            solution="In-house marketing with 'Speed-to-Lead' AI contacting inquiries in under 60s."
             delay="delay-300ms"
           />
         </div>
