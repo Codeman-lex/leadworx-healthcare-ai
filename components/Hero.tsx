@@ -2,8 +2,6 @@ import React from 'react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import { StarIcon } from './icons';
 
-// Removed problematic global JSX declaration
-
 interface HeroProps {
     ctaAction: () => void;
 }
@@ -15,44 +13,47 @@ const Hero: React.FC<HeroProps> = ({ ctaAction }) => {
       ref={sectionRef} 
       className="relative bg-hero-bg bg-cover bg-center"
     >
-        <div className="absolute inset-0 bg-gray-900/70" aria-hidden="true"></div>
+        {/* Stronger overlay for the new premium gradient background */}
+        <div className="absolute inset-0 bg-slate-900/70 backdrop-blur-[1px]" aria-hidden="true"></div>
+        
+        {/* Subtle mesh pattern overlay */}
         <div 
             className="absolute inset-0 opacity-10"
             style={{
-                backgroundImage: `url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-rule='evenodd'%3E%3Cpath d='M9 11h2v-2H9v2zm-4 4h2v-2H5v2zm8 0h2v-2h-2v2zm-4-8h2v-2H9v2zM5 7h2V5H5v2zm8 0h2V5h-2v2z'/%3E%3C/g%3E%3C/svg%3E")`,
+                backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
             }}
             aria-hidden="true"
         ></div>
 
-        <div className="relative container mx-auto px-4 sm:px-6 py-24 md:py-32">
-            <div className="grid md:grid-cols-2 gap-12 items-center">
+        <div className="relative container mx-auto px-6 pt-32 pb-20 md:pt-48 md:pb-32">
+            <div className="grid md:grid-cols-2 gap-16 items-center">
                 {/* Left Column */}
                 <div className="fade-in-up text-center md:text-left">
-                    <p className="font-semibold text-purple-300 flex items-center justify-center md:justify-start gap-2">
-                        <svg className="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg>
-                        AI-POWERED PATIENT ACQUISITION
-                    </p>
-                    <h1 className="font-display text-4xl md:text-6xl font-bold text-white leading-tight mt-4">
-                        Get 25+ Financially Qualified Patients Every Month, Automatically.
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 backdrop-blur-md text-purple-100 text-xs font-bold tracking-widest uppercase mb-6">
+                        <span className="w-2 h-2 rounded-full bg-purple-400 animate-pulse"></span>
+                        AI-Powered Patient Acquisition
+                    </div>
+                    <h1 className="font-display text-5xl md:text-7xl font-bold text-white leading-[1.1] tracking-tight">
+                        Get 25+ Financially <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-300 to-blue-300">Qualified Patients</span> Automatically.
                     </h1>
-                    <p className="mt-6 max-w-2xl mx-auto md:mx-0 text-lg md:text-xl text-gray-300 leading-relaxed">
-                        We install an AI-driven system that delivers financially qualified patients to your practice, without your staff making a single phone call.
+                    <p className="mt-8 max-w-2xl mx-auto md:mx-0 text-lg md:text-xl text-slate-300 leading-relaxed font-light">
+                        We install an AI-driven infrastructure that delivers financially qualified patients to your practice, without your staff making a single phone call.
                     </p>
                     <div className="mt-10 flex flex-col sm:flex-row items-center justify-center md:justify-start gap-6">
-                        <button onClick={ctaAction} className="bg-brand-purple hover:bg-brand-purple-dark text-white font-bold py-4 px-8 rounded-lg text-lg transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-xl w-full sm:w-auto">
+                        <button onClick={ctaAction} className="bg-brand-purple hover:bg-brand-purple-dark text-white font-bold py-4 px-10 rounded-xl text-lg transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-purple-500/25 w-full sm:w-auto border border-purple-400/20 ring-1 ring-purple-500/50">
                             Book a Free Call
                         </button>
-                        <div className="flex items-center gap-3">
-                            <div className="flex -space-x-2">
-                                <img className="inline-block h-10 w-10 rounded-full ring-2 ring-gray-800" src="https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" />
-                                <img className="inline-block h-10 w-10 rounded-full ring-2 ring-gray-800" src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" />
-                                <img className="inline-block h-10 w-10 rounded-full ring-2 ring-gray-800" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80" alt="" />
+                        <div className="flex items-center gap-4">
+                            <div className="flex -space-x-3">
+                                <img className="inline-block h-12 w-12 rounded-full ring-2 ring-slate-900 grayscale hover:grayscale-0 transition-all" src="https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" />
+                                <img className="inline-block h-12 w-12 rounded-full ring-2 ring-slate-900 grayscale hover:grayscale-0 transition-all" src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" />
+                                <img className="inline-block h-12 w-12 rounded-full ring-2 ring-slate-900 grayscale hover:grayscale-0 transition-all" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80" alt="" />
                             </div>
                             <div>
-                                <div className="flex items-center justify-center sm:justify-start">
-                                    {[...Array(5)].map((_, i) => <StarIcon key={i} />)}
+                                <div className="flex items-center justify-center sm:justify-start gap-0.5">
+                                    {[...Array(5)].map((_, i) => <StarIcon key={i} className="text-yellow-400 w-4 h-4" />)}
                                 </div>
-                                <p className="text-sm text-gray-400 font-medium">#1 Trusted by Private Practices</p>
+                                <p className="text-sm text-slate-400 font-medium mt-0.5">Trusted by 100+ Clinics</p>
                             </div>
                         </div>
                     </div>
@@ -60,8 +61,11 @@ const Hero: React.FC<HeroProps> = ({ ctaAction }) => {
                 
                 {/* Right Column (Wistia Video) */}
                 <div className="fade-in-up md:order-last" style={{ transitionDelay: '200ms' }}>
-                    <div className="w-full rounded-lg shadow-2xl overflow-hidden border-2 border-white/10">
-                        {React.createElement('wistia-player', { 'media-id': 'c5suobwacz', aspect: '1.7777777777777777' })}
+                    <div className="w-full rounded-2xl shadow-2xl overflow-hidden border-4 border-white/10 bg-slate-900 relative group">
+                         <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-blue-600 rounded-xl blur opacity-25 group-hover:opacity-40 transition duration-1000 group-hover:duration-200"></div>
+                         <div className="relative rounded-xl overflow-hidden">
+                            {React.createElement('wistia-player', { 'media-id': 'c5suobwacz', aspect: '1.7777777777777777' })}
+                         </div>
                     </div>
                 </div>
             </div>
