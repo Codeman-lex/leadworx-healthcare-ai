@@ -40,13 +40,13 @@ const Hero: React.FC<HeroProps> = ({ ctaAction }) => {
                     </h1>
                     
                     {/* Subheadline */}
-                    <p className="max-w-xl mx-auto lg:mx-0 text-base sm:text-lg md:text-xl text-slate-400 leading-relaxed font-light mb-8">
-                        We install a proprietary AI infrastructure that fills your calendar with financially qualified patients—without your staff making a single phone call.
+                    <p className="max-w-xl mx-auto lg:mx-0 text-base sm:text-lg md:text-xl text-slate-400 leading-relaxed font-light mb-5">
+                        AI that consistently delivers financially qualified patients directly into your calendar.
                     </p>
                     
                     {/* CTA Area */}
-                    <div className="flex flex-col w-full sm:w-auto items-center lg:items-start gap-4">
-                        <button onClick={ctaAction} className="w-full sm:w-auto group relative bg-brand-purple hover:bg-brand-purple-dark text-white font-bold py-3.5 px-8 rounded-xl text-base sm:text-lg transition-all duration-300 transform hover:-translate-y-1 shadow-[0_4px_14px_0_rgba(124,58,237,0.39)] hover:shadow-[0_6px_20px_rgba(124,58,237,0.23)] overflow-hidden">
+                    <div className="flex flex-col items-center lg:items-start gap-4">
+                        <button onClick={ctaAction} className="group relative bg-brand-purple hover:bg-brand-purple-dark text-white font-semibold py-2.5 px-5 rounded-xl text-sm transition-all duration-300 transform hover:-translate-y-1 shadow-[0_4px_14px_0_rgba(124,58,237,0.39)] hover:shadow-[0_6px_20px_rgba(124,58,237,0.23)] overflow-hidden">
                             <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]"></div>
                             <span className="relative flex items-center justify-center gap-2">
                                 Book a Free Strategy Call

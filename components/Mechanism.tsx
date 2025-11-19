@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
@@ -85,12 +86,12 @@ const ProvenSystem: React.FC<ProvenSystemProps> = ({ ctaAction }) => {
                             </div>
                         </div>
 
-                        <div className="mt-10">
+                        <div className="mt-8">
                             <button 
                                 onClick={ctaAction} 
-                                className="bg-brand-purple hover:bg-brand-purple-dark text-white font-bold py-4 px-8 rounded-lg text-lg transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-xl"
+                                className="bg-brand-purple hover:bg-brand-purple-dark text-white font-bold py-2.5 px-5 rounded-lg text-sm transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-xl"
                             >
-                                BOOK A FREE STRATEGY CALL
+                                Book a Free Strategy Call
                             </button>
                         </div>
                     </div>
